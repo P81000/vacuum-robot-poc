@@ -12,6 +12,10 @@ add_executable(${PROJECT_NAME}
     src/main.cpp
 )
 
+add_executable(mock_brain
+    src/mock_brain.cpp
+)
+
 target_link_directories(${PROJECT_NAME} PRIVATE
     ${RAYLIB_INCLUDE_DIRS}
 )
