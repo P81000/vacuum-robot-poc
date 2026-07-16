@@ -11,8 +11,11 @@ Honestly, the main goal of this README is to document my own development steps s
 Building an embedded Linux OS on my Mac required two massive workarounds. I had headaches trying to solve this bottlenecks:
 
 1. **The Case-Sensitive Sparse Image (`yocto-disk.sparseimage`)**
+    
     Mac's filesystem is case-insensitive by default. When I tried cloning Yocto directly to my disk, Git overwrote files with similar names and completely corrupted the source tree. My workaround was to put all the Yocto code inside a macOS Sparse Image formatted strictly as Case-Sensitive APFS.
+    
 2. **The `native-tmp` Directory**
+   
    I noticed Docker Volume mounts on my Mac were way too slow for Bitbake and broke advanced Linux file permissions (sockets/symlinks). To fix this, I mapped Yocto's `TMPDIR` output to a native directory *inside* the container (`/home/yoctouser/native-tmp`). This entirely bypasses the Mac volume bridge for the heavy compilation output.
 
 ---
@@ -109,7 +112,7 @@ export LD_LIBRARY_PATH=/opt/ros/humble/lib
 
 ---
 
-## 🗺 TODOs
+## TODOs
 
 Right now, the robot just spins in a hardcoded circle. The goal is to build out a proper decoupled robotics architecture.
 
